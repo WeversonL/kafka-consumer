@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: payment-consumer
+
+  datasource:
+    name: payment-datasource
+    url: ${DB_HOST}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  kafka:
+    bootstrap-servers: ${KAFKA_HOST}
+    consumer:
+      group-id: default-gid
+      auto-offset-reset: earliest
+
+topic:
+  default-topic: default_topic
+
+server:
+  port: ${SERVER_PORT:8080}
+
+logging:
+  level:
+    '[com.zaxxer.hikari]': OFF
+    '[org.hibernate]': OFF
